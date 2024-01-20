@@ -1,0 +1,23 @@
+.header {
+    text-align: center;
+}
+
+.subtitle {
+    text-align: center;
+
+}
+
+.search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    padding-top: 15px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.btn {
+    margin-top: 10px;
+}
