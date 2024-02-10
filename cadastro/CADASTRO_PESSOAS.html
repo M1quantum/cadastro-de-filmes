@@ -12,29 +12,98 @@
         <h1>Cadastro de Usuários</h1>
     </div>
     <br>
-    <div class="subtitle">
-      <h3>Dados do Usuário</h3>
-    </div>
-    <div class="container search">
-        <form class="d-flex flex-column align-items-center">
-            <input class="form-control mb-2" type="search" placeholder="Nome" aria-label="Search">
-            <input class="form-control mb-2" type="search" placeholder="Idade" aria-label="Search">
-            <input class="form-control mb-2" type="search" placeholder="CEP" aria-label="Search">
-            <input class="form-control mb-2" type="search" placeholder="Cidade" aria-label="Search">
-            <input class="form-control mb-2" type="search" placeholder="Estado" aria-label="Search">
-            <input class="form-control mb-2" type="search" placeholder="Endereço" aria-label="Search">
-            <input class="form-control mb-2" type="search" placeholder="Número" aria-label="Search">
-            <input class="form-control mb-2" type="search" placeholder="Telefone" aria-label="Search">
-        </form>
+    <div class="container">
+      <form>
+        <div class="subtitle">
+          <h3>Dados Pessoais</h3>
+        </div>
+        <div class="row">
+          <div class="col-sm-5">
+            <label for="text" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="text" aria-describedby="text">
+          </div>
+          <div class="col-sm-2">
+            <label class="form-label">Gênero</label>
+            <select class="form-select" aria-label="Default select example">
+              <option value="1">M</option>
+              <option value="2">F</option>
+            </select>
+          </div>
+          <div class="col-sm-1">
+            <label for="number" class="form-label">Idade</label>
+            <input type="number" class="form-control" id="number1" min="0" max="100">
+          </div>
+          <div class="col-sm-2">
+            <label for="text" class="form-label">Telefone</label>
+            <input type="text" class="form-control phone-ddd-mask" id="text1" placeholder="Ex.: (00) 00000-0000" onkeypress="mask(this);" onblur="mask(this);">
+          </div>
+        </div>
+
         <br>
-        <div>
-          <button type="button" class="btn btn-success">Salvar</button>
+        <div class="subtitle">
+          <h3>Endereço</h3>
         </div>
-        <div>
-          <button type="button" class="btn btn-secondary">Cancelar</button>
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="text" class="form-label">CEP</label>
+            <input type="text" class="form-control" id="text2" aria-describedby="text" onkeyup="maskCep(this)">
+          </div>
+          <div class="col-sm-5">
+            <label for="text" class="form-label">Rua</label>
+            <input type="text" class="form-control" id="text3" aria-describedby="text">
+          </div>
+          <div class="col-sm-5">
+            <label for="text" class="form-label">Bairro</label>
+            <input type="text" class="form-control" id="text4" aria-describedby="text">
+          </div>
         </div>
+          
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="text" class="form-label">Número</label>
+            <input type="text" class="form-control" id="text5" aria-describedby="text">
+          </div>
+          <div class="col-sm-10">
+            <label for="text" class="form-label">Complemento</label>
+            <input type="text" class="form-control" id="text6" aria-describedby="text">
+          </div>
+        </div>
+      
+        <button type="submit" class="btn btn-primary btn-success">Salvar</button>
+        <button type="button" class="btn btn-primary btn-secondary">Cancelar</button>
+      </form>
     </div>
+      
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
+
+
+
+<script>
+  function mask(o) {
+  setTimeout(function() {
+    var v = mphone(o.value);
+    if (v != o.value) {
+      o.value = v;
+    }
+  }, 1);
+}
+
+function mphone(v) {
+  var r = v.replace(/\D/g, "");
+  r = r.replace(/^0/, "");
+  if (r.length > 10) {
+    r = r.replace(/^(\d\d)(\d{5})(\d{4}).*/, "($1) $2-$3");
+  }
+  return r;
+}
+
+function maskCep (event) {
+  value = event.value.replace(/\D/g,'')
+  value = value.replace(/(\d{5})(\d)/,'$1-$2')
+  event.value=value
+}
+
+</script>
